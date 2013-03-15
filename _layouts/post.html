@@ -6,20 +6,29 @@
 </head>
 <body>
     <div id="container"> 
-      <header class="group">
-        <div class="header-inner">
-            <h1 class="logo"><a href="/">Blog.</a></h1>
-      </div>
-  </header>
-  <div id="content">
-    <section id="main" class="group">
-      {{ content }}
-      <div>
-        <a href="/">Back Home</a>
+
+        <header class="group">
+            <div class="header-inner">
+                <h1 class="logo"><a href="/">Blog.</a></h1>
+            </div>
+        </header>
+
+        <div id="content">
+            <section id="main" class="group">
+                {{ content }}
+        
+                <div>
+                    <a href="/">Back Home</a>
+                </div>
+            </section>
+        </div>
+
     </div>
-</section>
-</div>
-</div>
+
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/monokai.min.css">
+    <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
 </body>
 </html>
 
