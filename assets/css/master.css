@@ -17,11 +17,12 @@ body {
   line-height: 1;
   margin: 0;
   padding: 0;
+  background-color: red;
 }
 
 a:link,
 a:visited {
-  color: #F33;
+  color: yellow;
   font-weight: bold;
   text-decoration: none;
 }
