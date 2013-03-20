@@ -3,13 +3,40 @@ layout: default
 title: Hello World Blog
 ---
 
-<section id="main" class="group">
- <!--  <h2>Posts</h2>
+<h1>
+	Just 
+	keep 
+	rolling 
+	under 
+	the 
+	stars. 
+</h1>
+
+<!-- <section id="main" class="group">
+  <h2>Posts</h2>
   <ul class="posts">
     {% for post in site.posts %}
       <li>
         <span class="post-date">{{ post.date | date_to_string }}</span> <a href="{{ post.url }}">{{ post.title }}</a>
       </li>
     {% endfor %}
-  </ul>  -->
-</section> 
+  </ul> 
+</section> --> 
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var colors = ['yellow', 'blue','pink','orange','green'];
+    var i = 0, j = 0
+    var h = $('.hero-unit h1 a');
+    var body = $('body');
+    (function lights(){
+        j = i;
+        i++;
+        if(i == 5) {
+            i = 0;
+        }
+        h.removeClass(colors[j]).addClass(colors[i]);
+        body.removeClass(colors[j]).addClass(colors[i]);
+        window.setTimeout(lights, 700);
+    })();
+</script>

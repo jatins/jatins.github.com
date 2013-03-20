@@ -9,7 +9,7 @@
             background-color: red;
         }
         .hero-unit h1 {
-            font-size: 500px;
+            font-size: 150px;
         }
         .hero-unit h1 a:hover{
             text-decoration: none;
@@ -24,13 +24,8 @@
 </head>
 
 <body>
-    <div class="container"> 
-    
-        <div class="hero-unit">
-            {% include header.html %}
-        </div>
-
-        <div id="content">
+    <div class="container hero-unit"> 
+        <div id="content" >
             {{ content }}
         </div>
 
