@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="large-4 columns">
+		Hi, {{current_user}} 
+		(<a href="#" v-on="click: logout">logout</a>)
+		(<a href="#" v-on="click: details">Details</a>)
+		<br><br><br>
+		<input type="text" v-model="amount" placeholder="amount paid">
+	</div>
+
+	<div class="large-4 columns">
+		How much did you spend per person (including you)? <br><br>
+
+		abhishek: <input type="text" v-model="paidTo.abhishek">
+		akhil: <input type="text" v-model="paidTo.akhil">
+		jatin: <input type="text" v-model="paidTo.jatin">
+		ankita: <input type="text" v-model="paidTo.ankita">
+	</div>
+
+	<div class="large-4 columns">
+		reason:  <br><br><br>
+		<input type="text" v-model="reason | reasonValidator">
+		<small class="err" v-show="!validation.reason">Reason cannot be empty.</small>
+	</div>
+	
+</div>
+<br><br>
+<center>
+<a href="#" class="button tiny" v-on="click: submit">Sumbit</button>
+</center>	
+
+
+

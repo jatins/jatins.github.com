@@ -1,2 +1,6 @@
 _site/
 _drafts/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+

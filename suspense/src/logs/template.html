@@ -1,0 +1,32 @@
+<div class="row">
+	<a class="columns" href="#" v-on="click: goToHome()">Home</a>
+	<br><br>
+</div>
+
+<div class="row">
+	
+	<div class="large-3 columns">
+		<div><strong>Select X.</strong></div>
+
+		<li v-repeat="users" v-show="name != current_user">
+			<a href="#" v-on="click: getDetails(name)">{{name}}</a>
+		</li> 
+	</div>
+	
+	<div class="large-9 columns">
+		<div>
+			You need to pay {{selected_user}} Rs. {{net}}.
+		</div>
+		<hr>
+		<div class="columns large-4">
+			Paid <strong>to</strong> {{selected_user}} by you 
+			<li v-repeat="expenditure">{{paidTo[selected_user]}} ({{reason}})</li>
+
+		</div>
+		<div class="columns large-4">
+			Paid <strong>by</strong> {{selected_user}} to you
+			<li v-repeat="consumption">{{paidTo[current_user]}} ({{reason}})</li>
+		</div>
+	</div>
+	
+</div>
