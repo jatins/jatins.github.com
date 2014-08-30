@@ -29,7 +29,7 @@ module.exports = {
     		console.log(first);
     		console.log(second);
 
-    		var url = 'http://localhost:5000/logs/' + first + '/' + second;
+    		var url = 'http://suspense.herokuapp.com/logs/' + first + '/' + second;
     		
     		request.get(url)
     			.end(function(res){

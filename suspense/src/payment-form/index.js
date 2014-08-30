@@ -60,7 +60,7 @@ module.exports = {
                 alert("Sum not equal to parts");
             else {
                 request
-                .post('http://localhost:5000/payment')
+                .post('http://suspense.herokuapp.com/payment')
                 .send(obj)
                 .set('Accept', 'application/json')
                 .end(function(res){

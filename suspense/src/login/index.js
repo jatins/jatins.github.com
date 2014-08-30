@@ -18,7 +18,7 @@ module.exports = {
             };
             
     		request
-                .post('http://localhost:5000/auth')
+                .post('http://suspense.herokuapp.com/auth')
                 .send(obj)
                 .set('Accept', 'application/json')
                 .end(function(res){
