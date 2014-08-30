@@ -35,6 +35,12 @@ module.exports = {
         },
         
         submit: function() {
+            var vm = this;
+            vm.$parent.isLoading = 1;
+
+            vm.$parent.showMsg = 1;
+
+
             var amount = parseInt(this.amount),
                 abhishek = parseInt(this.paidTo.abhishek),
                 akhil = parseInt(this.paidTo.akhil),
@@ -56,8 +62,11 @@ module.exports = {
                 "reason": this.reason
             };
 
-            if(amount != abhishek + akhil + ankita + jatin)
+            if(amount != abhishek + akhil + ankita + jatin) {
                 alert("Sum not equal to parts");
+                vm.$parent.isLoading = 0;
+
+            }
             else {
                 request
                 .post('http://suspense.herokuapp.com/payment')
@@ -66,8 +75,25 @@ module.exports = {
                 .end(function(res){
                     console.log('res');
                     if(res.text == 'ok') {
-                        alert("DONE.");
+                        vm.$parent.showMsg = 1;
+                        vm.$parent.msg = 'Done!';
+
+                        setInterval(function(){
+                            vm.$parent.showMsg = 0;
+                            vm.$parent.msg = ''; 
+                        }, 2000);
+                    } else {
+                        vm.$parent.showMsg = 1;
+                        vm.$parent.msg = 'Error. Please try again after some time.';
+
+                        setInterval(function(){
+                            vm.$parent.showMsg = 0;
+                            vm.$parent.msg = ''; 
+                        }, 2000);
                     }
+                    
+                    vm.$parent.isLoading = 0;
+
                 });
             }
 

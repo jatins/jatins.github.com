@@ -7,17 +7,20 @@ module.exports = {
     data: {
         
     },
+
     methods: {
     	submitForm: function() {
+            console.log('pressed');
             var vm = this;
 
-    		console.log('hellllo');
+            vm.$parent.isLoading = 1;
+
             var obj = {
                 username: vm.username,
                 pwd: vm.pwd
             };
-            
-    		request
+
+            request
                 .post('http://suspense.herokuapp.com/auth')
                 .send(obj)
                 .set('Accept', 'application/json')
@@ -27,8 +30,18 @@ module.exports = {
                         console.log('Succesfull Validation');
                         localStorage.setItem('loggedIn', vm.username);
                         vm.$parent.currentView = 'payment';
+                        vm.$parent.isLoading = 0;
                     }
                 });
-    	}
+                
+        }
     }
 };
+
+
+
+
+
+
+
+

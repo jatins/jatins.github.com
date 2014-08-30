@@ -8,6 +8,9 @@
     </head>
     <body>
         <div id="app" class="row">
+            <br>
+            <div class="message" v-show="showMsg">{{msg}}</div>
+            <div class="overlay" v-show="isLoading">Loading...</div>
             <hr> <br>
             <div v-view="currentView"></div>
         </div>

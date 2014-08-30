@@ -15,7 +15,8 @@ var app = new Vue({
     data: {
     	currentView: 'login',
         title: 'Suspense',
-        current_user: ''
+        current_user: '',
+        isLoading: 0,
     },
 
     created: function() {
