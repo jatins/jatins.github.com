@@ -75,6 +75,7 @@ module.exports = {
                 .end(function(res){
                     console.log('res');
                     if(res.text == 'ok') {
+                        vm.clearFields();
                         vm.$parent.showMsg = 1;
                         vm.$parent.msg = 'Done!';
 
@@ -97,6 +98,19 @@ module.exports = {
                 });
             }
 
+        },
+
+        clearFields: function() {
+            var vm = this;
+            vm.amount = '';
+            vm.paidTo.abhishek = 0;
+            vm.paidTo.akhil = 0;
+            vm.paidTo.jatin = 0;
+            vm.paidTo.ankita = 0;
+            
+            vm.validation.reason = false;
+            
+            vm.reason =  '';
         }
     },
 
