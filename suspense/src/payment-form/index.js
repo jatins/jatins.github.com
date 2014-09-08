@@ -2,6 +2,9 @@ require('insert-css')(require('./style.css'))
 var request = require('superagent');
 var moment = require('moment');
 
+var Config = require('../Config');
+var env = require('../env');
+
 module.exports = {
     template: require('./template.html'),
     data: {
@@ -78,7 +81,7 @@ module.exports = {
             }
             else {
                 request
-                .post('http://suspense.herokuapp.com/payment')
+                .post(Config[env.Current_Environment]['server_url'] + 'payment')
                 .send(obj)
                 .set('Accept', 'application/json')
                 .end(function(res){

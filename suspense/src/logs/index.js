@@ -2,6 +2,9 @@ require('insert-css')(require('./style.css'))
 var request = require('superagent');
 var moment = require('moment');
 
+var Config = require('../Config');
+var env = require('../env');
+
 module.exports = {
     template: require('./template.html'),
     data: {
@@ -29,7 +32,7 @@ module.exports = {
     		console.log(first);
     		console.log(second);
 
-    		var url = 'http://suspense.herokuapp.com/logs/' + first + '/' + second;
+    		var url = Config[env.Current_Environment]['server_url'] + 'logs/' + first + '/' + second;
     		
     		request.get(url)
     			.end(function(res){
