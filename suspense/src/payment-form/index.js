@@ -62,10 +62,19 @@ module.exports = {
                 "reason": this.reason
             };
 
-            if(amount != abhishek + akhil + ankita + jatin) {
-                alert("Sum not equal to parts");
+            if(vm.reason == '') {
+                vm.$parent.showMsg = 1;
+                vm.$parent.msg = 'REASON kaun dega?!';
                 vm.$parent.isLoading = 0;
 
+                setInterval(function(){
+                    vm.$parent.showMsg = 0;
+                    vm.$parent.msg = ''; 
+                }, 2000);
+            }
+            else if(amount != abhishek + akhil + ankita + jatin) {
+                alert("Sum not equal to parts");
+                vm.$parent.isLoading = 0;
             }
             else {
                 request

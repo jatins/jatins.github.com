@@ -1,6 +1,6 @@
 {
   "name": "suspense-client",
-  "version": "0.0.0",
+  "version": "0.9.1",
   "description": "suspense - the expense manager",
   "main": "src/main.js",
   "dependencies": {
