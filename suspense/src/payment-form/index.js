@@ -17,7 +17,9 @@ module.exports = {
         validation: {
             reason : false
         }, 
-        reason: ''
+        reason: '',
+        trio: 0,
+        recipeMsg: "Recipes are quick way to split money. Just click one below to auto-split."
     },
 
     filters: {
@@ -123,10 +125,22 @@ module.exports = {
             vm.validation.reason = false;
             
             vm.reason =  '';
+        }, 
+
+        threeWaySplit: function() {
+            console.log('threeWay');
+            var vm = this;
+            vm.paidTo.abhishek = vm.paidTo.jatin = Math.round(vm.amount/3);
+            vm.paidTo.akhil = vm.amount - (vm.paidTo.abhishek + vm.paidTo.jatin);
         }
     },
 
     attached: function() {
-        this.$parent.current_user =  localStorage.getItem('loggedIn')
+        this.$parent.current_user =  localStorage.getItem('loggedIn');
+        if(this.$parent.current_user == 'abhishek' ||
+            this.$parent.current_user == 'akhil' ||
+            this.$parent.current_user == 'jatin'
+            )
+            this.trio = 1;
     }
 };

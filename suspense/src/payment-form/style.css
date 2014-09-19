@@ -1,3 +1,7 @@
 .err{
 	color: red;
 }
+
+.recipe p{
+	font-size: small;
+}

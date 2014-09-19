@@ -23,6 +23,7 @@ module.exports = {
                 pwd: vm.pwd
             };
 
+            console.log(Config[env.Current_Environment]['server_url'] + 'auth');
             request
                 .post(Config[env.Current_Environment]['server_url'] + 'auth')
                 .send(obj)

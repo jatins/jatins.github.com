@@ -8,12 +8,23 @@
 	</div>
 
 	<div class="large-4 columns">
-		How much did you spend per person (including you)? <br><br>
+		How much did you spend per person? <br><br>
 
 		abhishek: <input type="text" v-model="paidTo.abhishek">
 		akhil: <input type="text" v-model="paidTo.akhil">
 		jatin: <input type="text" v-model="paidTo.jatin">
 		ankita: <input type="text" v-model="paidTo.ankita">
+		
+		
+		<div class="row recipe" v-show="trio">
+			<div class="large-12 columns">
+				<br>
+				<p><em>- now you can use recipes to auto-split -</em></p>
+				<span data-tooltip class="has-tip" title="{{recipeMsg}}">Recipe: </span>
+				<a href="#" v-on="click: threeWaySplit"><p>3 way equal split between abhishek/jatin/akhil.</p></a>	
+			</div>
+		</div>
+		
 	</div>
 
 	<div class="large-4 columns">

@@ -1,3 +1,3 @@
 module.exports = {
-	'Current_Environment' : 'Local'
+	'Current_Environment' : 'Prod'
 }

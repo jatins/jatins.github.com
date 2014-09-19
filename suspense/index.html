@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="foundation/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="foundation/css/foundation.min.css">
+        <script src="foundation/js/vendor/modernizr.js"></script>
     </head>
     <body>
         <div id="app" class="row">
@@ -15,8 +16,13 @@
             <div v-view="currentView"></div>
         </div>
 
-        <script src="dist/bundle.js"></script>
+        <script src="dist/bundle.js?version=2"></script>
         <script src="foundation/js/vendor/jquery.js"></script>
         <script src="foundation/js/foundation.min.js"></script>
+        <!-- // <script src="foundation/js/foundation/foundation.tooltip.js"></script> -->
+
+        <script>
+            $(document).foundation();
+        </script>
     </body>
 </html>
