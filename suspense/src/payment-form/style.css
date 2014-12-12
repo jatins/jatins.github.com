@@ -5,3 +5,8 @@
 .recipe p{
 	font-size: small;
 }
+
+canvas {
+	opacity: 0.1;
+	position: absolute;
+}
