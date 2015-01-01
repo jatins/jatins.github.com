@@ -34,8 +34,19 @@ module.exports = {
                         console.log('Succesfull Validation');
                         localStorage.setItem('loggedIn', vm.username);
                         vm.$parent.currentView = 'payment';
-                        vm.$parent.isLoading = 0;
                     }
+                    else {
+                        vm.$parent.showMsg = 1;
+                        vm.$parent.msg = 'Woops. Invalid username/pwd.';
+
+                        setInterval(function(){
+                            vm.$parent.showMsg = 0;
+                            vm.$parent.msg = ''; 
+                        }, 2500);
+                    }
+                    
+                    vm.$parent.isLoading = 0;
+
                 });
                 
         }

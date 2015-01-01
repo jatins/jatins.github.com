@@ -12,12 +12,14 @@
         <div id="app" class="row">
             <br>
             <div class="message" v-show="showMsg">{{msg}}</div>
-            <div class="overlay" v-show="isLoading">Loading...</div>
+            <div class="overlay" v-show="isLoading">
+                <div class="spinner"></div>
+            </div>
             <hr> <br>
             <div v-view="currentView"></div>
         </div>
 
-        <script src="dist/bundle.js?version=3"></script>
+        <script src="dist/bundle.js?version=4"></script>
         <script src="foundation/js/vendor/jquery.js"></script>
         <script src="foundation/js/foundation.min.js"></script>
 
