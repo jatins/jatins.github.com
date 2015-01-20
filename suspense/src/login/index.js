@@ -13,12 +13,13 @@ function loginUser(name) {
 }
 
 function showMsg(msg) {
+  var self = this;
   this.showMsg = 1;  //this == ViewModel instance
   this.msg = 'Woops. Invalid username/pwd.';
 
   setInterval(function(){
-    this.showMsg = 0;
-    this.msg = ''; 
+    self.showMsg = 0;
+    self.msg = ''; 
   }, 2500);
 }
 
@@ -54,6 +55,7 @@ module.exports = {
           loginUser.call(vm, vm.username);
         }
         else {
+          console.log('Failed Validation');
           showMsg.call(vm, 'Woops. Invalid username/pwd.');
         }
 

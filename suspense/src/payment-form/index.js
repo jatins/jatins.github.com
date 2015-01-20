@@ -6,12 +6,13 @@ var Config = require('../Config');
 var env = require('../env');
 
 function showMsg(message) {
+    var self = this;
     this.showMsg = 1;
     this.msg = message;
 
     setInterval(function(){
-        this.showMsg = 0;
-        this.msg = ''; 
+        self.showMsg = 0;
+        self.msg = ''; 
     }, 2000);   
 }
 
@@ -116,7 +117,6 @@ module.exports = {
                 jatin = parseInt(this.paidTo.jatin),
                 ankita = parseInt(this.paidTo.ankita);
 
-            console.log(abhishek);
 
             var obj = {
                 "amount": amount,
@@ -131,12 +131,14 @@ module.exports = {
                 "reason": this.reason
             };
 
+            console.log(obj);
+
             if(vm.reason == '') {
+                console.log("NO REASON")
                 showMsg.call(vm, 'REASON kaun dega?!');
             }
             else if(amount != abhishek + akhil + ankita + jatin) {
                 alert("Sum not equal to parts");
-                vm.isLoading = 0;
             }
             else {
                 request
@@ -151,12 +153,10 @@ module.exports = {
                     } else {
                         showMsg.call(vm, 'Error. Please try again after some time.');
                     }
-                    
-                    vm.isLoading = 0;
-
                 });
             }
 
+            vm.isLoading = 0;
         },
 
         clearFields: function() {

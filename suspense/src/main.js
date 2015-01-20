@@ -18,6 +18,8 @@ var app = new Vue({
         title: 'Suspense',
         current_user: '',
         isLoading: 0,
+        msg: '',
+        showMsg: 0
     },
 
     beforeCompile: function() {
