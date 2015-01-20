@@ -16,7 +16,9 @@ module.exports = {
        		{name: 'ankita'}
         ], 
         selected_user: ' - ',
-        net : ' --- '
+        net : ' --- ',
+        expenditure: [],
+        consumption: []
       };
     },
 
