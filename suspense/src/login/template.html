@@ -1,8 +1,31 @@
-<div class="large-3 columns">
-	<img src="http://i.imgur.com/uW474eT.gif" alt="expense"> <br><br><br><br>
-	<input type="text" v-model="username" placeholder="username">
-	<input type="password" v-model="pwd" placeholder="pwd">
-	<button class="tiny button" v-on="click: submitForm">Ok</button>
+<div class="row">
+	<div class="large-3 columns">
+		<img src="http://i.imgur.com/uW474eT.gif" alt="expense"> <br><br><br>
+	</div>
 </div>
+
+<div class="row">
+	<div class="large-3 columns">
+		<!-- <div class="login-with-fb" v-on="click: loginWithFb">Login with Facebook</div> -->
+		<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> -->
+		<!-- TODO: getting checkLoginState as undefined -->
+		<!-- </fb:login-button> -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 columns divider">
+		<em> ------- or ------- </em>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-3 columns">
+		<input type="text" v-model="username" placeholder="username">
+		<input type="password" v-model="pwd" placeholder="pwd">
+		<button class="tiny button" v-on="click: submitForm">Ok</button>
+	</div>
+</div>
+
 
 

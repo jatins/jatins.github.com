@@ -1,0 +1,22 @@
+.vertical-line {
+	border-left: thick solid #ff0000;
+}
+
+.login-with-fb {
+	border: 1px solid rgb(81, 73, 189);
+	padding: 10px;
+	color: rgb(81, 73, 189);
+	border-radius: 5px;
+}
+
+.login-with-fb:hover {
+	cursor: pointer;
+}
+
+.divider {
+	color: rgba(0,0,0,0.4);
+	padding: 10px;
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

@@ -2,6 +2,7 @@ require('insert-css')(require('./app.css'))
 var Vue = require('vue');
 var _ = require('underscore');
 
+// Vue.config.debug = true
 
 var app = new Vue({
     el: '#app',
@@ -19,10 +20,9 @@ var app = new Vue({
         isLoading: 0,
     },
 
-    created: function() {
-        if(localStorage.getItem('loggedIn'))
+    beforeCompile: function() {
+        if(localStorage.getItem('loggedIn')) {
             this.currentView = 'payment';
+        }
     },
-
-
 });

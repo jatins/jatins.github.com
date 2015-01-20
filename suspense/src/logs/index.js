@@ -7,20 +7,24 @@ var env = require('../env');
 
 module.exports = {
     template: require('./template.html'),
-    data: {
-       users: [
+    data: function() {
+      return {
+        users: [
        		{name: 'abhishek'},
        		{name: 'akhil'},
        		{name: 'jatin'},
        		{name: 'ankita'}
-       ], 
-       selected_user: 'X',
-       net : 'XXX'
+        ], 
+        selected_user: ' - ',
+        net : ' --- '
+      };
     },
+
+    inherit: true,
     
     methods: {
       goToHome: function() {
-        this.$parent.currentView = 'payment'
+        this.currentView = 'payment'
       },
 
     	getDetails: function(second) {
@@ -28,7 +32,7 @@ module.exports = {
         var vm = this;
         vm.selected_user = second;
 
-    		var first = this.$parent.current_user;
+    		var first = this.current_user;
     		console.log(first);
     		console.log(second);
 
@@ -46,8 +50,8 @@ module.exports = {
             })
 
             vm.consumption.forEach(function(el, index){
-              console.log(vm.$parent.current_user);
-              totalC += el.paidTo[vm.$parent.current_user];
+              console.log(vm.current_user);
+              totalC += el.paidTo[vm.current_user];
             })
 
             console.log(totalC);

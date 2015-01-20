@@ -5,6 +5,16 @@ var moment = require('moment');
 var Config = require('../Config');
 var env = require('../env');
 
+function showMsg(message) {
+    this.showMsg = 1;
+    this.msg = message;
+
+    setInterval(function(){
+        this.showMsg = 0;
+        this.msg = ''; 
+    }, 2000);   
+}
+
 function generateBg() {
     document.addEventListener('touchmove', function (e) {
         e.preventDefault()
@@ -34,7 +44,7 @@ function generateBg() {
         x.beginPath()
         x.moveTo(i.x, i.y)
         x.lineTo(j.x, j.y)
-        var k = j.x + (z()*2-0.99)*f,
+        var k = j.x + (z()*2-0.50)*f,
             n = y(j.y)
         x.lineTo(k, n)
         x.closePath()
@@ -55,43 +65,49 @@ function generateBg() {
             
 module.exports = {
     template: require('./template.html'),
-    data: {
-        paidTo: {
-            abhishek: 0,
-            akhil: 0,
-            jatin: 0,
-            ankita: 0
-        },
-        validation: {
-            reason : false
-        }, 
-        reason: '',
-        trio: 0,
-        recipeMsg: "Recipes are quick way to split money. Just click one below to auto-split."
+    data: function() {
+        return {
+            paidTo: {
+                abhishek: 0,
+                akhil: 0,
+                jatin: 0,
+                ankita: 0
+            },
+            validation: {
+                reason : false
+            }, 
+            reason: '',
+            trio: 0,
+            recipeMsg: "Recipes are quick way to split money. Just click one below to auto-split."
+        };
     },
 
+    inherit: true,
+
     filters: {
-        reasonValidator: function (val) {
-            this.validation.reason = !!val
-            return val;
-        }
+        reasonValidator: {
+            write: function (val) {
+                this.validation.reason = !!val
+                return val;
+            }
+        },
     },
 
     methods: {
     	logout: function() {
             current_user: localStorage.removeItem('loggedIn');
-            this.$parent.currentView = 'login';
+            this.currentView = 'login';
         },
 
         details: function() {
-            this.$parent.currentView = 'logs';
+            this.currentView = 'logs';
         },
         
         submit: function() {
             var vm = this;
-            vm.$parent.isLoading = 1;
+            vm.isLoading = 1;
 
-            vm.$parent.showMsg = 1;
+            vm.showMsg = 1;
 
 
             var amount = parseInt(this.amount),
@@ -104,7 +120,7 @@ module.exports = {
 
             var obj = {
                 "amount": amount,
-                "paidBy": this.$parent.current_user,
+                "paidBy": this.current_user,
                 "paidTo": {
                     "akhil" : akhil,
                     "abhishek" : abhishek,
@@ -116,18 +132,11 @@ module.exports = {
             };
 
             if(vm.reason == '') {
-                vm.$parent.showMsg = 1;
-                vm.$parent.msg = 'REASON kaun dega?!';
-                vm.$parent.isLoading = 0;
-
-                setInterval(function(){
-                    vm.$parent.showMsg = 0;
-                    vm.$parent.msg = ''; 
-                }, 2000);
+                showMsg.call(vm, 'REASON kaun dega?!');
             }
             else if(amount != abhishek + akhil + ankita + jatin) {
                 alert("Sum not equal to parts");
-                vm.$parent.isLoading = 0;
+                vm.isLoading = 0;
             }
             else {
                 request
@@ -138,24 +147,12 @@ module.exports = {
                     console.log('res');
                     if(res.text == 'ok') {
                         vm.clearFields();
-                        vm.$parent.showMsg = 1;
-                        vm.$parent.msg = 'Done!';
-
-                        setInterval(function(){
-                            vm.$parent.showMsg = 0;
-                            vm.$parent.msg = ''; 
-                        }, 2000);
+                        showMsg.call(vm, 'Done!');
                     } else {
-                        vm.$parent.showMsg = 1;
-                        vm.$parent.msg = 'Error. Please try again after some time.';
-
-                        setInterval(function(){
-                            vm.$parent.showMsg = 0;
-                            vm.$parent.msg = ''; 
-                        }, 2000);
+                        showMsg.call(vm, 'Error. Please try again after some time.');
                     }
                     
-                    vm.$parent.isLoading = 0;
+                    vm.isLoading = 0;
 
                 });
             }
@@ -183,13 +180,16 @@ module.exports = {
         }
     },
 
+    
     attached: function() {
         generateBg();
+        console.log(this);
+        console.log("Current_User: "+ localStorage.getItem('loggedIn'));
+        this.current_user =  localStorage.getItem('loggedIn');
 
-        this.$parent.current_user =  localStorage.getItem('loggedIn');
-        if(this.$parent.current_user == 'abhishek' ||
-            this.$parent.current_user == 'akhil' ||
-            this.$parent.current_user == 'jatin'
+        if(this.current_user == 'abhishek' ||
+            this.current_user == 'akhil' ||
+            this.current_user == 'jatin'
             )
             this.trio = 1;
     }
