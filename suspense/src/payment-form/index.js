@@ -10,7 +10,7 @@ function showMsg(message) {
     this.showMsg = 1;
     this.msg = message;
 
-    setInterval(function(){
+    setTimeout(function(){
         self.showMsg = 0;
         self.msg = ''; 
     }, 2000);   

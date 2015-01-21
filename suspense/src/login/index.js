@@ -17,7 +17,7 @@ function showMsg(msg) {
   this.showMsg = 1;  //this == ViewModel instance
   this.msg = 'Woops. Invalid username/pwd.';
 
-  setInterval(function(){
+  setTimeout(function(){
     self.showMsg = 0;
     self.msg = ''; 
   }, 2500);
