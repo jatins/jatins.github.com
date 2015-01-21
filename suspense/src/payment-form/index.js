@@ -134,10 +134,13 @@ module.exports = {
             console.log(obj);
 
             if(vm.reason == '') {
+                vm.isLoading = 0;
                 console.log("NO REASON")
                 showMsg.call(vm, 'REASON kaun dega?!');
+
             }
             else if(amount != abhishek + akhil + ankita + jatin) {
+                vm.isLoading = 0;
                 alert("Sum not equal to parts");
             }
             else {
@@ -146,6 +149,7 @@ module.exports = {
                 .send(obj)
                 .set('Accept', 'application/json')
                 .end(function(res){
+                    vm.isLoading = 0;
                     console.log('res');
                     if(res.text == 'ok') {
                         vm.clearFields();
@@ -156,7 +160,6 @@ module.exports = {
                 });
             }
 
-            vm.isLoading = 0;
         },
 
         clearFields: function() {
