@@ -64,12 +64,16 @@ module.exports = {
       });
     },
 
-  /*loginWithFb: function() {
+  loginWithFb: function() {
+    console.log("tryinh logging in with fb");
+    var vm = this;
+
     FB.login(function(response) {
      if (response.authResponse) {
        console.log('Welcome!  Fetching your information.... ');
        FB.api('/me', function(response) {
          console.log('Good to see you, ' + response.name + '.');
+         loginUser.call(vm, response.first_name.toLowerCase());
        });
      } else {
        console.log('User cancelled login or did not fully authorize.');
@@ -77,7 +81,7 @@ module.exports = {
    }, {scope: 'public_profile,email'});
   },
 
-  checkLoginState: function () {
+  /*checkLoginState: function () {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
@@ -86,7 +90,7 @@ module.exports = {
   },
 
   beforeCompile: function () {
-    /*var appId = '339539406246085';
+    var appId = '339539406246085';
 
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -108,15 +112,6 @@ module.exports = {
         console.log('Please log into FB.');
         
       }
-    }
-
-    // This function is called when someone finishes with the Login
-    // Button.  See the onlogin handler attached to it in the sample
-    // code below.
-    window.checkLoginState = function checkLoginState() {
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-      });
     }
 
     window.fbAsyncInit = function() {
@@ -154,17 +149,5 @@ module.exports = {
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-    // Here we run a very simple test of the Graph API after login is
-    // successful.  See statusChangeCallback() for when this call is made.
-    function testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log(response);
-        console.log('Thanks for logging in, ' + response.name + '!');
-        localStorage.setItem('loggedIn', response.first_name.toLowerCase());
-        this.$parent.currentView = 'payment';
-      });
-    }*/
   }
 };
