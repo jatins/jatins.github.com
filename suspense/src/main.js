@@ -4,6 +4,7 @@ var _ = require('underscore');
 
 // Vue.config.debug = true
 
+
 var app = new Vue({
     el: '#app',
     components: {
@@ -23,6 +24,11 @@ var app = new Vue({
     },
 
     beforeCompile: function() {
+        if(!(localStorage.getItem('notFirstTime'))) {
+            localStorage.removeItem('loggedIn');
+            localStorage.setItem('notFirstTime', "true");
+        } 
+
         if(localStorage.getItem('loggedIn')) {
             this.currentView = 'payment';
         }
