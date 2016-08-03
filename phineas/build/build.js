@@ -29,8 +29,8 @@ var _socketIoClient = require('socket.io-client');
 
 var _socketIoClient2 = _interopRequireDefault(_socketIoClient);
 
-var RP_SERVER = 'http://104.199.142.6:3001';
-var SOCKET_SERVER = 'http://104.155.200.228';
+var RP_SERVER = 'http://104.199.191.92:3001';
+var SOCKET_SERVER = 'http://104.199.186.79';
 
 var socket = (0, _socketIoClient2['default'])(SOCKET_SERVER);
 
