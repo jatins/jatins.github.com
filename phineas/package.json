@@ -4,22 +4,23 @@
   "description": "Phineas Chat Example",
   "main": "index.js",
   "scripts": {
-    "dev": "watchify -vd -p browserify-hmr -t vueify -e src/main.js -o build/build.js & http-server -c 1 -a localhost",
-    "build": "NODE_ENV=production ./node_modules/watchify/node_modules/.bin/browserify -t vueify -e src/main.js | uglifyjs -c warnings=false -m > build/build.js"
+    "dev": "BUILD_ENV=dev watchify -vd -t vueify -g envify -e src/main.js -o build/build.js",
+    "serve": "http-server",
+    "build": "BUILD_ENV=prod NODE_ENV=production browserify -t vueify -g envify -e src/main.js  > build/build.js"
   },
   "author": "JS",
   "license": "MIT",
   "devDependencies": {
     "babel-runtime": "^5.8.25",
     "browserify-hmr": "^0.3.1",
+    "envify": "^3.4.1",
     "http-server": "^0.8.5",
     "jade": "^1.11.0",
     "stylus": "^0.52.4",
     "uglify-js": "^2.5.0",
     "vue-hot-reload-api": "^1.2.1",
     "vueify": "^4.0.0",
-    "vueify-insert-css": "^1.0.0",
-    "watchify": "^3.4.0"
+    "vueify-insert-css": "^1.0.0"
   },
   "dependencies": {
     "page": "^1.6.4",
